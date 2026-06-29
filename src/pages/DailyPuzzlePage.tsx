@@ -13,15 +13,21 @@ export default function DailyPuzzlePage() {
     const puzzle = useDailyPuzzle();
     
     const [livesRemaining, setLivesRemaining] = useState<number>(4);
-    const [guess, setGuess] = useState<string>("");
+    
+    const [guess, setGuess] = useState(() =>
+        puzzle.words.map((word) => ({
+            ...word,
+            guess: "",
+            solved: !word.hidden,
+        }))
+    );
     
     const decrementLives = (): void => {
         setLivesRemaining(livesRemaining - 1);
     };
 
     const checkAnswers = (): void => {
-        let answer = "My cat is...";
-        if (guess === answer) {
+        if (guess === puzzle.words) {
             // you win
         }
         else {

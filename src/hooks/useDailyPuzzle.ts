@@ -1,7 +1,8 @@
 import { LAUNCH_DATE } from "../constants/constants";
 import { puzzles } from "../data/puzzles";
+import type { PuzzleProps } from "../types/puzzle";
 
-export const useDailyPuzzle = () => {
+export const useDailyPuzzle = (): PuzzleProps => {
     const today = new Date();
 
     const daysSinceLaunch = Math.floor(

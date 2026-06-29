@@ -1,4 +1,5 @@
-export const puzzles = [{
+export const puzzles = [
+  {
     id: 1,
     imageUrl: "/images/cat1.png",
     words: [
@@ -12,4 +13,5 @@ export const puzzles = [{
       { id: 8, answer: "a", hidden: false },
       { id: 9, answer: "superhero", hidden: true },
     ],
-}];
+  }
+];
