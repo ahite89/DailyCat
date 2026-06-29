@@ -1,6 +1,6 @@
 import type { HeaderProps } from "../types/header";
 
-export const Header = ({ puzzleNumber, date }: HeaderProps) => {
+export default function Header({ puzzleNumber, date }: HeaderProps) {
     return (
         <header>
             <h1>Daily Cat #{puzzleNumber}</h1>

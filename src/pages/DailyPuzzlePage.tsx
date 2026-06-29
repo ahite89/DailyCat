@@ -1,13 +1,14 @@
 import { useState } from "react";
 
-import { Header } from "../components/Header";
-import { Image } from "../components/Image";
-import { Sentence } from "../components/Sentence";
-import { Lives } from "../components/Lives";
-import { CheckButton } from "../components/CheckButton";
+import Header from "../components/Header";
+import Image from "../components/Image";
+import Sentence from "../components/Sentence";
+import Lives from "../components/Lives";
+import CheckButton from "../components/CheckButton";
+
 import { useDailyPuzzle } from "../hooks/useDailyPuzzle";
 
-export const DailyPuzzlePage = () => {
+export default function DailyPuzzlePage() {
 
     const puzzle = useDailyPuzzle();
     

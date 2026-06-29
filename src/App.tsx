@@ -1,5 +1,5 @@
 import './App.css'
-import { DailyPuzzlePage } from './pages/DailyPuzzlePage';
+import DailyPuzzlePage from './pages/DailyPuzzlePage';
 
 function App() {
   return <DailyPuzzlePage />;
