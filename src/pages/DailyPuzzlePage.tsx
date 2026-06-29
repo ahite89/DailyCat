@@ -1,44 +1,31 @@
-import { useState } from "react";
-
+import { usePuzzle } from "../hooks/usePuzzle";
 import Header from "../components/Header";
 import Image from "../components/Image";
 import Sentence from "../components/Sentence";
 import Lives from "../components/Lives";
 import CheckButton from "../components/CheckButton";
 
-import { useDailyPuzzle } from "../hooks/useDailyPuzzle";
-import { createGameWords } from "../utils/createGameWords";
-
 export default function DailyPuzzlePage() {
 
-    const puzzle = useDailyPuzzle();
-    
-    const [livesRemaining, setLivesRemaining] = useState<number>(4);
-    
-    const [guess, setGuess] = useState(
-        createGameWords(puzzle.words)
-    );
-    
-    const decrementLives = (): void => {
-        setLivesRemaining(livesRemaining - 1);
-    };
-
-    const checkAnswers = (): void => {
-        if (guess === puzzle.words) {
-            // you win
-        }
-        else {
-            decrementLives();
-        }
-    };
+    const {
+      puzzle,
+      words,
+      livesRemaining,
+      updateGuess,
+      checkAnswers,
+      gameStatus,
+    } = usePuzzle();
 
     return (
-        <>
+        <main>
             <Header puzzleNumber={puzzle.id} date={new Date()} />
             <Image imageUrl={puzzle.imageUrl} />
-            <Sentence words={guess}/>
+            <Sentence words={words} onGuessChange={updateGuess}/>
             <Lives livesRemaining={livesRemaining} />
-            <CheckButton checkAnswers={checkAnswers}/>
-        </>
+            <CheckButton checkAnswers={checkAnswers} gameStatus={gameStatus}/>
+
+            {gameStatus === "won" && <p>You solved it!</p>}
+            {gameStatus === "lost" && <p>You ran out of lives!</p>}
+        </main>
     );
 };

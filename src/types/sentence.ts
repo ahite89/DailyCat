@@ -1,5 +1,6 @@
 export type SentenceProps = {
     words: GuessProps[];
+    onGuessChange: () => void;
 };
 
 export type WordProps = {
