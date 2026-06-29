@@ -18,12 +18,33 @@ export function usePuzzle() {
         ? "lost"
         : "playing";
 
-  const updateGuess = () => {
-    // TBD
+  const updateGuess = (wordId: number, guess: string) => {
+    setWords((currentWords) =>
+      currentWords.map((word) =>
+        word.id === wordId ? { ...word, guess } : word
+      )
+    );
   };
 
   const checkAnswers = () => {
-    // TBD
+    setWords((currentWords) =>
+      currentWords.map((word) => {
+        if (!word.hidden || word.solved) {
+          return word;
+        }
+
+        const isCorrect =
+          word.guess.trim().toLowerCase() === word.answer.toLowerCase();
+
+        return {
+          ...word,
+          solved: isCorrect,
+          guess: isCorrect ? word.answer : "",
+        };
+      })
+    );
+
+    setLivesRemaining((lives) => lives - 1);
   };
 
   return {

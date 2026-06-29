@@ -1,7 +1,7 @@
 import type { SentenceProps } from "../types/sentence";
 import Word from "./Word";
 
-export default function Sentence({ words }: SentenceProps) {
+export default function Sentence({ words, onGuessChange }: SentenceProps) {
     return (
         <div>
             <p>My cat is...</p>
