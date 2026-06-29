@@ -1,5 +1,5 @@
 export type SentenceProps = {
-    words: WordProps[];
+    words: GuessProps[];
 };
 
 export type WordProps = {
@@ -11,5 +11,5 @@ export type WordProps = {
 export type GuessProps = WordProps & {
     guess: string;
     solved: boolean;
-    onChange: (value: string) => void;
+    // onChange: (value: string) => void;
 };

@@ -7,6 +7,7 @@ import Lives from "../components/Lives";
 import CheckButton from "../components/CheckButton";
 
 import { useDailyPuzzle } from "../hooks/useDailyPuzzle";
+import { createGameWords } from "../utils/createGameWords";
 
 export default function DailyPuzzlePage() {
 
@@ -14,12 +15,8 @@ export default function DailyPuzzlePage() {
     
     const [livesRemaining, setLivesRemaining] = useState<number>(4);
     
-    const [guess, setGuess] = useState(() =>
-        puzzle.words.map((word) => ({
-            ...word,
-            guess: "",
-            solved: !word.hidden,
-        }))
+    const [guess, setGuess] = useState(
+        createGameWords(puzzle.words)
     );
     
     const decrementLives = (): void => {
@@ -39,7 +36,7 @@ export default function DailyPuzzlePage() {
         <>
             <Header puzzleNumber={puzzle.id} date={new Date()} />
             <Image imageUrl={puzzle.imageUrl} />
-            <Sentence words={puzzle.words}/>
+            <Sentence words={guess}/>
             <Lives livesRemaining={livesRemaining} />
             <CheckButton checkAnswers={checkAnswers}/>
         </>
