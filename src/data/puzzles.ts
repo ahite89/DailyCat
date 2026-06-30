@@ -1,7 +1,7 @@
 export const puzzles = [
   {
     id: 1,
-    imageUrl: "/images/cat1.png",
+    imageUrl: "/images/dailycat1.png",
     words: [
       { id: 1, answer: "playing", guessable: true },
       { id: 2, answer: "chess", guessable: true },
