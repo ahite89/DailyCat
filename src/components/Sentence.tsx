@@ -3,11 +3,17 @@ import Word from "./Word";
 
 export default function Sentence({ words, onGuessChange }: SentenceProps) {
     return (
-        <div>
+        <section>
             <p>My cat is...</p>
-            {words.map((word) => (
-                <Word key={word.id} id={word.id} answer={word.answer} hidden={word.hidden} />
-            ))}
-        </div>
+            <div className="sentence-words">
+                {words.map((word) => (
+                    <Word 
+                        key={word.id} 
+                        {...word}
+                        onGuessChange={onGuessChange}
+                    />
+                ))}
+            </div>
+        </section>
     );
 };

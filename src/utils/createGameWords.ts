@@ -1,11 +1,11 @@
-import type { GuessProps, WordProps } from "../types/sentence";
+import type { GameWord, PuzzleWord } from "../types/puzzle";
 
 export function createGameWords(
-  words: WordProps[]
-): GuessProps[] {
+  words: PuzzleWord[]
+): GameWord[] {
   return words.map((word) => ({
     ...word,
     guess: "",
-    solved: !word.hidden,
+    solved: !word.guessable,
   }));
 }

@@ -29,7 +29,7 @@ export function usePuzzle() {
   const checkAnswers = () => {
     setWords((currentWords) =>
       currentWords.map((word) => {
-        if (!word.hidden || word.solved) {
+        if (!word.guessable || word.solved) {
           return word;
         }
 

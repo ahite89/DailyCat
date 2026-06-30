@@ -1,15 +1,13 @@
+import type { GameWord } from "./puzzle";
+
 export type SentenceProps = {
-    words: GuessProps[];
+    words: GameWord[];
     onGuessChange: (wordId: number, guess: string) => void;
 };
 
-export type WordProps = {
-    id: number;
-    answer: string;
-    hidden: boolean;
-};
-
-export type GuessProps = WordProps & {
-    guess: string;
-    solved: boolean;
+export type WordProps = GameWord & {
+    onGuessChange: (
+        id: number,
+        guess: string
+    ) => void;
 };

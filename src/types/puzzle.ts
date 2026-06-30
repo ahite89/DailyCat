@@ -1,7 +1,16 @@
-import type { WordProps } from "./sentence";
-
 export type PuzzleProps = {
     id: number;
     imageUrl: string;
-    words: WordProps[];
+    words: PuzzleWord[];
+};
+
+export type PuzzleWord = {
+    id: number;
+    answer: string;
+    guessable: boolean;
+};
+
+export type GameWord = PuzzleWord & {
+    guess: string;
+    solved: boolean;
 };
