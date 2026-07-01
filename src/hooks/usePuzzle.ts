@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useDailyPuzzle } from "./useDailyPuzzle";
 import { createGameWords } from "../utils/createGameWords";
+import { TOTAL_LIVES } from "../constants/constants";
 
 export function usePuzzle() {
   const puzzle = useDailyPuzzle();
@@ -9,14 +10,30 @@ export function usePuzzle() {
     createGameWords(puzzle.words)
   );
 
-  const [livesRemaining, setLivesRemaining] = useState(4);
+  const [livesRemaining, setLivesRemaining] = useState(TOTAL_LIVES);
 
   const gameStatus =
-    words.every((word) => word.solved)
-      ? "won"
-      : livesRemaining === 0
-        ? "lost"
+    livesRemaining === 0
+      ? "lost"
+      : words.every((word) => word.solved)
+        ? "won"
         : "playing";
+
+  const revealAnswers = () => {
+    setWords((currentWords) =>
+      currentWords.map((word) => ({
+        ...word,
+        guess: word.answer,
+        solved: true,
+      }))
+    );
+  };
+
+  useEffect(() => {
+    if (livesRemaining === 0) {
+      revealAnswers();
+    }
+  }, [livesRemaining]);
 
   const updateGuess = (wordId: number, guess: string) => {
     setWords((currentWords) =>
@@ -27,24 +44,33 @@ export function usePuzzle() {
   };
 
   const checkAnswers = () => {
-    setWords((currentWords) =>
-      currentWords.map((word) => {
-        if (!word.guessable || word.solved) {
-          return word;
-        }
+    let hasIncorrectGuess = false;
 
-        const isCorrect =
-          word.guess.trim().toLowerCase() === word.answer.toLowerCase();
+    const updatedWords = words.map((word) => {
+      if (!word.guessable || word.solved) {
+        return word;
+      }
 
-        return {
-          ...word,
-          solved: isCorrect,
-          guess: isCorrect ? word.answer : "",
-        };
-      })
-    );
+      const isCorrect =
+        word.guess.trim().toLowerCase() ===
+        word.answer.toLowerCase();
 
-    setLivesRemaining((lives) => lives - 1);
+      if (!isCorrect) {
+        hasIncorrectGuess = true;
+      }
+
+      return {
+        ...word,
+        solved: isCorrect,
+        guess: isCorrect ? word.answer : "",
+      };
+    });
+
+    setWords(updatedWords);
+
+    if (hasIncorrectGuess) {
+      setLivesRemaining((lives) => lives - 1);
+    }
   };
 
   return {
