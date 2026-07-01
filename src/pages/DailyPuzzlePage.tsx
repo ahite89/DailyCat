@@ -25,10 +25,13 @@ export default function DailyPuzzlePage() {
             <Sentence words={words} onGuessChange={updateGuess}/>
             <Lives livesRemaining={livesRemaining} />
             <Button 
-                text="Check Answers" 
                 onClick={checkAnswers} 
-                disabled={gameStatus !== "playing"}
-            />
+                disabled={gameStatus !== "playing"} 
+                variant="primary"
+                aria-label="Check Answers"
+            >
+                Check Answers
+            </Button>
 
             {gameStatus === "won" && (
                 <ResultMessage

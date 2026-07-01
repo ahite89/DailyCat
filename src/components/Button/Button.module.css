@@ -1,21 +1,15 @@
 .button {
   display: block;
   margin: 2rem auto 0;
-
   padding: 0.85rem 2rem;
-
   border: none;
   border-radius: 8px;
-
   background: #222;
   color: white;
-
   font: inherit;
   font-size: 1rem;
   font-weight: 600;
-
   cursor: pointer;
-
   transition:
     background-color 150ms ease,
     transform 150ms ease;
@@ -33,4 +27,15 @@
   background: #cfcfcf;
   color: #777;
   cursor: default;
+}
+
+.primary {
+  background: #222;
+  color: white;
+}
+
+.secondary {
+  background: white;
+  color: #222;
+  border: 1px solid #ccc;
 }
