@@ -1,0 +1,30 @@
+.wordInput,
+.solvedInput {
+  border: none;
+  border-radius: 0;
+  background: transparent;
+  padding: 0.1rem 0;
+  text-align: center;
+  font: inherit;
+  outline: none;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.wordInput {
+  border-bottom: 2px solid #222;
+}
+
+.wordInput:focus {
+  border-bottom-color: #000;
+}
+
+.solvedInput {
+  color: #1b7f3b;
+  border-bottom: 2px solid transparent;
+  pointer-events: none;
+}
+
+.visibleWord {
+  display: inline-block;
+}

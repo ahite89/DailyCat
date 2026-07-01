@@ -1,6 +1,6 @@
 import styles from "./Sentence.module.css";
 import type { SentenceProps } from "../../types/sentence";
-import Word from "../Word";
+import Word from "../Word/Word";
 
 export default function Sentence({ words, onGuessChange }: SentenceProps) {
     return (
