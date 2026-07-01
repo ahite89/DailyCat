@@ -7,6 +7,7 @@ import Sentence from "../../components/Sentence/Sentence";
 import Lives from "../../components/Lives/Lives";
 import Button from "../../components/Button/Button";
 import ResultMessage from "../../components/ResultMessage/ResultMessage";
+import Divider from "../../components/Divider/Divider";
 
 export default function DailyPuzzlePage() {
     const {
@@ -21,9 +22,13 @@ export default function DailyPuzzlePage() {
     return (
         <main className={styles.page}>
             <Header puzzleNumber={puzzle.id} date={new Date()} />
+            <Divider />
             <Image imageUrl={puzzle.imageUrl} />
+            <Divider />
             <Sentence words={words} onGuessChange={updateGuess}/>
+            <Divider />
             <Lives livesRemaining={livesRemaining} />
+            <Divider />
             <Button 
                 onClick={checkAnswers} 
                 disabled={gameStatus !== "playing"} 
@@ -35,15 +40,15 @@ export default function DailyPuzzlePage() {
 
             {gameStatus === "won" && (
                 <ResultMessage
-                    title="You solved it!"
-                    message="The full prompt has been revealed."
+                    title="Nicely done!"
+                    message="Come back tomorrow for another cat"
                 />
             )}
 
             {gameStatus === "lost" && (
                 <ResultMessage
-                    title="Out of lives!"
-                    message="Better luck on tomorrow’s cat."
+                    title="Good try!"
+                    message="Better luck on tomorrow’s cat"
                 />
             )}
         </main>
