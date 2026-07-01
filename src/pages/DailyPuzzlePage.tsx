@@ -4,7 +4,7 @@ import Header from "../components/Header";
 import Image from "../components/Image/Image";
 import Sentence from "../components/Sentence/Sentence";
 import Lives from "../components/Lives/Lives";
-import CheckButton from "../components/CheckButton";
+import Button from "../components/Button/Button";
 import ResultMessage from "../components/ResultMessage/ResultMessage";
 
 export default function DailyPuzzlePage() {
@@ -24,7 +24,11 @@ export default function DailyPuzzlePage() {
             <Image imageUrl={puzzle.imageUrl} />
             <Sentence words={words} onGuessChange={updateGuess}/>
             <Lives livesRemaining={livesRemaining} />
-            <CheckButton checkAnswers={checkAnswers} gameStatus={gameStatus}/>
+            <Button 
+                text="Check Answers" 
+                onClick={checkAnswers} 
+                disabled={gameStatus !== "playing"}
+            />
 
             {gameStatus === "won" && (
                 <ResultMessage
