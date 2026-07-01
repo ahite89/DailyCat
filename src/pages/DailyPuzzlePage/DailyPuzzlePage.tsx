@@ -1,14 +1,14 @@
-import { usePuzzle } from "../hooks/usePuzzle";
+import { usePuzzle } from "../../hooks/usePuzzle";
+import styles from "./DailyPuzzlePage.module.css";
 
-import Header from "../components/Header/Header";
-import Image from "../components/Image/Image";
-import Sentence from "../components/Sentence/Sentence";
-import Lives from "../components/Lives/Lives";
-import Button from "../components/Button/Button";
-import ResultMessage from "../components/ResultMessage/ResultMessage";
+import Header from "../../components/Header/Header";
+import Image from "../../components/Image/Image";
+import Sentence from "../../components/Sentence/Sentence";
+import Lives from "../../components/Lives/Lives";
+import Button from "../../components/Button/Button";
+import ResultMessage from "../../components/ResultMessage/ResultMessage";
 
 export default function DailyPuzzlePage() {
-
     const {
       puzzle,
       words,
@@ -19,7 +19,7 @@ export default function DailyPuzzlePage() {
     } = usePuzzle();
 
     return (
-        <main>
+        <main className={styles.page}>
             <Header puzzleNumber={puzzle.id} date={new Date()} />
             <Image imageUrl={puzzle.imageUrl} />
             <Sentence words={words} onGuessChange={updateGuess}/>

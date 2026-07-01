@@ -1,4 +1,4 @@
-import DailyPuzzlePage from './pages/DailyPuzzlePage';
+import DailyPuzzlePage from './pages/DailyPuzzlePage/DailyPuzzlePage';
 
 function App() {
   return <DailyPuzzlePage />;
