@@ -1,6 +1,6 @@
 import { usePuzzle } from "../hooks/usePuzzle";
 
-import Header from "../components/Header";
+import Header from "../components/Header/Header";
 import Image from "../components/Image/Image";
 import Sentence from "../components/Sentence/Sentence";
 import Lives from "../components/Lives/Lives";
