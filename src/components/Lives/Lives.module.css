@@ -1,0 +1,21 @@
+.container {
+  text-align: center;
+  margin-top: 1.25rem;
+}
+
+.label {
+  margin: 0 0 0.4rem;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.lives {
+  display: flex;
+  justify-content: center;
+  gap: 0.35rem;
+}
+
+.life {
+  font-size: 1.5rem;
+  line-height: 1;
+}

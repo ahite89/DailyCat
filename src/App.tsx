@@ -1,4 +1,3 @@
-import './App.css'
 import DailyPuzzlePage from './pages/DailyPuzzlePage';
 
 function App() {
