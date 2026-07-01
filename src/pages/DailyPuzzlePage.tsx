@@ -1,7 +1,7 @@
 import { usePuzzle } from "../hooks/usePuzzle";
 import Header from "../components/Header";
 import Image from "../components/Image/Image";
-import Sentence from "../components/Sentence";
+import Sentence from "../components/Sentence/Sentence";
 import Lives from "../components/Lives/Lives";
 import CheckButton from "../components/CheckButton";
 
