@@ -13,7 +13,9 @@
   display: flex;
   flex-wrap: wrap;
   gap: .4rem;
-  justify-content: flex-start;
+  align-items: center;
+  line-height: 1.4;
+  perspective: 600px;
 }
 
 .shake {

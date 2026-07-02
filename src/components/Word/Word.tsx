@@ -22,6 +22,7 @@ export default function Word({
             className={[
                 styles.wordInput,
                 solved ? styles.solvedInput : "",
+                status === "correct" ? styles.flip : "",
                 status === "incorrect" ? styles.incorrectInput : "",
             ].join(" ")}
             value={solved ? answer : guess}
