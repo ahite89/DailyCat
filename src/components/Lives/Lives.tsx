@@ -10,7 +10,7 @@ export default function Lives({ livesRemaining }: LivesProps) {
       <div className={styles.lives}>
         {Array.from({ length: TOTAL_LIVES }).map((_, index) => (
           <span key={index} className={styles.life}>
-            {index < livesRemaining ? "🐱" : "⬜"}
+            {index < livesRemaining ? "🐱" : ""}
           </span>
         ))}
       </div>

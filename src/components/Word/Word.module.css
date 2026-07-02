@@ -1,11 +1,22 @@
 .wordInput,
+.solvedInput,
+.visibleWord {
+  font: inherit;
+  line-height: 1.4;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 1.8em;
+  box-sizing: border-box;
+}
+
+.wordInput,
 .solvedInput {
   border: none;
   border-radius: 0;
   background: transparent;
-  padding: 0.1rem 0;
+  padding: 0;
   text-align: center;
-  font: inherit;
   outline: none;
   appearance: none;
   -webkit-appearance: none;
@@ -26,5 +37,5 @@
 }
 
 .visibleWord {
-  display: inline-block;
+  border-bottom: 2px solid transparent;
 }

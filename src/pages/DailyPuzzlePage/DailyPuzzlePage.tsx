@@ -41,7 +41,7 @@ export default function DailyPuzzlePage() {
             {gameStatus === "won" && (
                 <ResultMessage
                     title="Nicely done!"
-                    message="Come back tomorrow for another cat"
+                    message="Check back tomorrow for another cat"
                 />
             )}
 
