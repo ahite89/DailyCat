@@ -1,4 +1,5 @@
 import type { LivesProps } from "../../types/lives";
+import CatIcon from "../CatIcon/CatIcon";
 import { TOTAL_LIVES } from "../../constants/constants";
 import styles from "./Lives.module.css";
 
@@ -9,9 +10,13 @@ export default function Lives({ livesRemaining }: LivesProps) {
 
       <div className={styles.lives}>
         {Array.from({ length: TOTAL_LIVES }).map((_, index) => (
-          <span key={index} className={styles.life}>
-            {index < livesRemaining ? "🐱" : ""}
-          </span>
+          <CatIcon key={index} 
+            className={
+              index < livesRemaining
+                ? styles.life
+                : styles.lifeLost
+            }
+          />
         ))}
       </div>
     </section>
