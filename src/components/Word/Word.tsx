@@ -7,6 +7,7 @@ export default function Word({
     guessable,
     guess,
     solved,
+    status,
     onGuessChange
 }: WordProps) {
     
@@ -18,7 +19,11 @@ export default function Word({
 
     return (
         <input
-            className={solved ? styles.solvedInput : styles.wordInput}
+            className={[
+                styles.wordInput,
+                solved ? styles.solvedInput : "",
+                status === "incorrect" ? styles.incorrectInput : "",
+            ].join(" ")}
             value={solved ? answer : guess}
             onChange={(event) => onGuessChange(id, event.target.value)}
             readOnly={solved}

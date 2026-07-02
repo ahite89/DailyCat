@@ -17,6 +17,8 @@ export default function DailyPuzzlePage() {
       updateGuess,
       checkAnswers,
       gameStatus,
+      isChecking,
+      shouldShake,
     } = usePuzzle();
 
     return (
@@ -25,13 +27,13 @@ export default function DailyPuzzlePage() {
             <Divider />
             <Image imageUrl={puzzle.imageUrl} />
             <Divider />
-            <Sentence words={words} onGuessChange={updateGuess}/>
+            <Sentence words={words} onGuessChange={updateGuess} shouldShake={shouldShake} />
             <Divider />
             <Lives livesRemaining={livesRemaining} />
             <Divider />
             <Button 
                 onClick={checkAnswers} 
-                disabled={gameStatus !== "playing"} 
+                disabled={gameStatus !== "playing" || isChecking} 
                 variant="primary"
                 aria-label="Check Answers"
             >

@@ -2,11 +2,15 @@ import styles from "./Sentence.module.css";
 import type { SentenceProps } from "../../types/sentence";
 import Word from "../Word/Word";
 
-export default function Sentence({ words, onGuessChange }: SentenceProps) {
+export default function Sentence({ words, onGuessChange, shouldShake }: SentenceProps) {
     return (
         <section className={styles.container}>
             <p className={styles.prefix}>My cat is...</p>
-            <div className={styles.sentence}>
+            <div
+                className={`${styles.sentence} ${
+                    shouldShake ? styles.shake : ""
+                }`}
+            >
                 {words.map((word) => (
                     <Word
                         key={word.id}

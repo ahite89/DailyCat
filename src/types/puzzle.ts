@@ -1,3 +1,5 @@
+export type WordStatus = "idle" | "correct" | "incorrect";
+
 export type PuzzleProps = {
     id: number;
     imageUrl: string;
@@ -13,4 +15,5 @@ export type PuzzleWord = {
 export type GameWord = PuzzleWord & {
     guess: string;
     solved: boolean;
+    status: WordStatus;
 };

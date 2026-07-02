@@ -20,9 +20,6 @@
   outline: none;
   appearance: none;
   -webkit-appearance: none;
-}
-
-.wordInput {
   border-bottom: 2px solid #222;
 }
 
@@ -32,8 +29,13 @@
 
 .solvedInput {
   color: #1b7f3b;
-  border-bottom: 2px solid transparent;
+  border-bottom-color: transparent;
   pointer-events: none;
+}
+
+.incorrectInput {
+  color: #c62828;
+  border-bottom-color: #c62828;
 }
 
 .visibleWord {

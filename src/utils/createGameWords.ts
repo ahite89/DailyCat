@@ -7,5 +7,6 @@ export function createGameWords(
     ...word,
     guess: "",
     solved: !word.guessable,
+    status: "idle",
   }));
 }

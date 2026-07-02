@@ -1,6 +1,6 @@
 .container {
-    max-width: 600px;
-    margin: 0 auto;
+  max-width: 600px;
+  margin: 0 auto;
 }
 
 .prefix {
@@ -10,8 +10,34 @@
 }
 
 .sentence {
-    display: flex;
-    flex-wrap: wrap;
-    gap: .4rem;
-    justify-content: flex-start;
+  display: flex;
+  flex-wrap: wrap;
+  gap: .4rem;
+  justify-content: flex-start;
+}
+
+.shake {
+  animation: shake 180ms ease-in-out;
+}
+
+@keyframes shake {
+  0% {
+    transform: translateX(0);
+  }
+
+  25% {
+    transform: translateX(-3px);
+  }
+
+  50% {
+    transform: translateX(3px);
+  }
+
+  75% {
+    transform: translateX(-2px);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
 }
