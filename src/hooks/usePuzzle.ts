@@ -31,7 +31,37 @@ export function usePuzzle() {
     );
   };
 
-  const revealAnswersOneAtATime = async () => {
+  const revealCorrectWord = async (wordId: number) => {
+    setWords((currentWords) =>
+      currentWords.map((word) =>
+        word.id === wordId
+          ? {
+              ...word,
+              guess: word.answer,
+              solved: true,
+              status: "flipping",
+            }
+          : word
+      )
+    );
+
+    await sleep(260);
+
+    setWords((currentWords) =>
+      currentWords.map((word) =>
+        word.id === wordId
+          ? {
+              ...word,
+              status: "correct",
+            }
+          : word
+      )
+    );
+
+    await sleep(150);
+  };
+
+  const revealRemainingAnswers = async () => {
     setIsChecking(true);
 
     const unsolvedWords = words.filter(
@@ -39,20 +69,7 @@ export function usePuzzle() {
     );
 
     for (const word of unsolvedWords) {
-      setWords((currentWords) =>
-        currentWords.map((currentWord) =>
-          currentWord.id === word.id
-            ? {
-                ...currentWord,
-                guess: currentWord.answer,
-                solved: true,
-                status: "correct",
-              }
-            : currentWord
-        )
-      );
-
-      await sleep(440);
+      await revealCorrectWord(word.id);
     }
 
     setIsChecking(false);
@@ -82,22 +99,25 @@ export function usePuzzle() {
       const isCorrect =
         word.guess.trim().toLowerCase() === word.answer.toLowerCase();
 
-      setWords((currentWords) =>
-        currentWords.map((currentWord) =>
-          currentWord.id === word.id
-            ? {
-                ...currentWord,
-                solved: isCorrect,
-                status: isCorrect ? "correct" : "incorrect",
-                guess: isCorrect ? currentWord.answer : currentWord.guess,
-              }
-            : currentWord
-        )
-      );
+      if (isCorrect) {
+        await revealCorrectWord(word.id);
+      } 
+      else {
+        setWords((currentWords) =>
+          currentWords.map((currentWord) =>
+            currentWord.id === word.id
+              ? {
+                  ...currentWord,
+                  solved: isCorrect,
+                  status: isCorrect ? "correct" : "incorrect",
+                  guess: isCorrect ? currentWord.answer : currentWord.guess,
+                }
+              : currentWord
+          )
+        );
 
-      await sleep(440);
+        await sleep(440);
 
-      if (!isCorrect) {
         setWords((currentWords) =>
           currentWords.map((currentWord) =>
             currentWord.id === word.id
@@ -117,7 +137,7 @@ export function usePuzzle() {
       setLivesRemaining(nextLives);
 
       if (nextLives === 0) {
-        await revealAnswersOneAtATime();
+        await revealRemainingAnswers();
       }
     }
 

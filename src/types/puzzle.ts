@@ -1,4 +1,4 @@
-export type WordStatus = "idle" | "correct" | "incorrect";
+export type WordStatus = "idle" | "flipping" | "correct" | "incorrect";
 
 export type PuzzleProps = {
     id: number;

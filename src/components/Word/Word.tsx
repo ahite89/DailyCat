@@ -22,8 +22,15 @@ export default function Word({
             className={[
                 styles.wordInput,
                 solved ? styles.solvedInput : "",
-                status === "correct" ? styles.flip : "",
-                status === "incorrect" ? styles.incorrectInput : "",
+                status === "flipping"
+                    ? styles.flip
+                    : "",
+                status === "correct"
+                    ? styles.correct
+                    : "",
+                status === "incorrect"
+                    ? styles.incorrectInput
+                    : "",
             ].join(" ")}
             value={solved ? answer : guess}
             onChange={(event) => onGuessChange(id, event.target.value)}
