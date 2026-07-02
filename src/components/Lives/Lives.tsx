@@ -4,7 +4,7 @@ import { TOTAL_LIVES } from "../../constants/constants";
 import styles from "./Lives.module.css";
 
 export default function Lives({ livesRemaining }: LivesProps) {
-    return (
+  return (
     <section className={styles.container} aria-label="Lives remaining">
       <p className={styles.label}>Lives remaining:</p>
 

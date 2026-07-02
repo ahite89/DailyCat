@@ -1,5 +1,7 @@
 export type WordStatus = "idle" | "flipping" | "correct" | "incorrect";
 
+export type GameStatus = "playing" | "won" | "lost";
+
 export type PuzzleProps = {
     id: number;
     imageUrl: string;

@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useDailyPuzzle } from "./useDailyPuzzle";
 import { createGameWords } from "../utils/createGameWords";
 import { TOTAL_LIVES } from "../constants/constants";
+import type { GameStatus } from "../types/puzzle";
 
 const sleep = (ms: number) =>
   new Promise((resolve) => window.setTimeout(resolve, ms));
@@ -14,7 +15,7 @@ export function usePuzzle() {
   const [isChecking, setIsChecking] = useState(false);
   const [shouldShake, setShouldShake] = useState(false);
 
-  const gameStatus =
+  const gameStatus: GameStatus =
     livesRemaining === 0
       ? "lost"
       : words.every((word) => word.solved)
@@ -133,6 +134,7 @@ export function usePuzzle() {
     }
 
     if (hasIncorrectGuess) {
+      await sleep(220);
       const nextLives = Math.max(livesRemaining - 1, 0);
       setLivesRemaining(nextLives);
 
