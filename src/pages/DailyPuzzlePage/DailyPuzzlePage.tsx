@@ -38,20 +38,6 @@ export default function DailyPuzzlePage() {
             >
                 Check Answers
             </Button>
-
-            {/* {gameStatus === "won" && (
-                <ResultMessage
-                    title="Nicely done!"
-                    message="Check back tomorrow for another cat"
-                />
-            )}
-
-            {gameStatus === "lost" && (
-                <ResultMessage
-                    title="Good try!"
-                    message="Better luck on tomorrow’s cat"
-                />
-            )} */}
         </main>
     );
 };
