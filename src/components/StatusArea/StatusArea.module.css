@@ -1,0 +1,41 @@
+.container {
+  min-height: 4.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  perspective: 600px;
+}
+
+.content {
+  text-align: center;
+  transform-origin: center;
+}
+
+.flipIn {
+  animation: flipIn 320ms ease-out;
+}
+
+.title {
+  margin: 0;
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: #111;
+}
+
+.subtitle {
+  margin: 0.35rem 0 0;
+  font-size: 0.95rem;
+  color: #666;
+}
+
+@keyframes flipIn {
+  0% {
+    transform: rotateX(90deg);
+    opacity: 0;
+  }
+
+  100% {
+    transform: rotateX(0deg);
+    opacity: 1;
+  }
+}

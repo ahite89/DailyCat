@@ -4,10 +4,9 @@ import styles from "./DailyPuzzlePage.module.css";
 import Header from "../../components/Header/Header";
 import Image from "../../components/Image/Image";
 import Sentence from "../../components/Sentence/Sentence";
-import Lives from "../../components/Lives/Lives";
 import Button from "../../components/Button/Button";
-import ResultMessage from "../../components/ResultMessage/ResultMessage";
 import Divider from "../../components/Divider/Divider";
+import StatusArea from "../../components/StatusArea/StatusArea";
 
 export default function DailyPuzzlePage() {
     const {
@@ -29,7 +28,7 @@ export default function DailyPuzzlePage() {
             <Divider />
             <Sentence words={words} onGuessChange={updateGuess} shouldShake={shouldShake} />
             <Divider />
-            <Lives livesRemaining={livesRemaining} />
+            <StatusArea gameStatus={gameStatus} livesRemaining={livesRemaining} />
             <Divider />
             <Button 
                 onClick={checkAnswers} 
@@ -40,7 +39,7 @@ export default function DailyPuzzlePage() {
                 Check Answers
             </Button>
 
-            {gameStatus === "won" && (
+            {/* {gameStatus === "won" && (
                 <ResultMessage
                     title="Nicely done!"
                     message="Check back tomorrow for another cat"
@@ -52,7 +51,7 @@ export default function DailyPuzzlePage() {
                     title="Good try!"
                     message="Better luck on tomorrow’s cat"
                 />
-            )}
+            )} */}
         </main>
     );
 };
