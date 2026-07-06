@@ -14,6 +14,7 @@ export function usePuzzle() {
   const [livesRemaining, setLivesRemaining] = useState(TOTAL_LIVES);
   const [isChecking, setIsChecking] = useState(false);
   const [shouldShake, setShouldShake] = useState(false);
+  const [tightenSentence, setTightenSentence] = useState(false);
   const [displayStatus, setDisplayStatus] = useState<GameStatus>("playing");
 
   const gameStatus: GameStatus =
@@ -89,6 +90,7 @@ export function usePuzzle() {
     );
 
     setIsChecking(true);
+    setTightenSentence(false);
 
     if (hasIncorrectGuess) {
       setShouldShake(true);
@@ -142,11 +144,15 @@ export function usePuzzle() {
       if (nextLives === 0) {
         await revealRemainingAnswers();
         await sleep(350);
+        setTightenSentence(true);
+        await sleep(450);
         setDisplayStatus("lost");
       }
     }
     else {
       await sleep(350);
+      setTightenSentence(true);
+      await sleep(450);
       setDisplayStatus("won");
     }
 
@@ -163,5 +169,6 @@ export function usePuzzle() {
     displayStatus,
     isChecking,
     shouldShake,
+    tightenSentence,
   };
 }

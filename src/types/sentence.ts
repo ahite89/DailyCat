@@ -4,6 +4,7 @@ export type SentenceProps = {
     words: GameWord[];
     onGuessChange: (wordId: number, guess: string) => void;
     shouldShake: boolean;
+    tightenSentence: boolean;
 };
 
 export type WordProps = GameWord & {
@@ -11,4 +12,5 @@ export type WordProps = GameWord & {
         id: number,
         guess: string
     ) => void;
+    tightenSentence: boolean;
 };

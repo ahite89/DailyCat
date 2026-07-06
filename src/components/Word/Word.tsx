@@ -8,7 +8,8 @@ export default function Word({
     guess,
     solved,
     status,
-    onGuessChange
+    onGuessChange,
+    tightenSentence
 }: WordProps) {
     
     const wordWidth = `${Math.max(answer.length, 3)}ch`;
@@ -17,25 +18,34 @@ export default function Word({
         return <span className={styles.visibleWord}>{answer}</span>;
     }
 
+    if (solved) {
+        return (
+            <span
+                className={[
+                    styles.solvedWord,
+                    status === "flipping" ? styles.flip : "",
+                    status === "correct" ? styles.correct : "",
+                ].join(" ")}
+                style={
+                    tightenSentence
+                    ? undefined
+                    : { width: wordWidth }
+                }
+            >
+                {answer}
+            </span>
+        );
+    }
+
     return (
         <input
             name={`word` + id.toString()}
             className={[
                 styles.wordInput,
-                solved ? styles.solvedInput : "",
-                status === "flipping"
-                    ? styles.flip
-                    : "",
-                status === "correct"
-                    ? styles.correct
-                    : "",
-                status === "incorrect"
-                    ? styles.incorrectInput
-                    : "",
+                status === "incorrect" ? styles.incorrectInput : "",
             ].join(" ")}
-            value={solved ? answer : guess}
+            value={guess}
             onChange={(event) => onGuessChange(id, event.target.value)}
-            readOnly={solved}
             style={{ width: wordWidth }}
             autoCapitalize="none"
             autoComplete="off"

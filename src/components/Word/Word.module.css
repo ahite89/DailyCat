@@ -1,5 +1,4 @@
 .wordInput,
-.solvedInput,
 .visibleWord {
   font: inherit;
   line-height: 1.4;
@@ -10,8 +9,11 @@
   box-sizing: border-box;
 }
 
-.wordInput,
-.solvedInput {
+.visibleWord {
+  border-bottom: 2px solid transparent;
+}
+
+.wordInput {
   border: none;
   border-radius: 0;
   background: transparent;
@@ -27,12 +29,14 @@
   border-bottom-color: #000;
 }
 
-.solvedInput {
+.solvedWord {
+  display: inline-block;
+  text-align: center;
   color: #222;
-  border-bottom-color: transparent;
+  border-bottom: 2px solid transparent;
   transition:
-      color 150ms ease,
-      border-bottom-color 150ms ease;
+      width 300ms ease,
+      color 150ms ease;
 }
 
 .correct {
@@ -42,10 +46,6 @@
 .incorrectInput {
   color: #c62828;
   border-bottom-color: #c62828;
-}
-
-.visibleWord {
-  border-bottom: 2px solid transparent;
 }
 
 .flip {
