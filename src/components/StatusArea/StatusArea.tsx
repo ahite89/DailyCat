@@ -27,15 +27,15 @@ export default function StatusArea({
 
         {gameStatus === "won" && (
           <>
-            <p className={styles.title}>Purrfect solve!</p>
+            <p className={styles.title}>Nicely done!</p>
             <p className={styles.subtitle}>Come back tomorrow for another daily dose of cat</p>
           </>
         )}
 
         {gameStatus === "lost" && (
           <>
-            <p className={styles.title}>What a cat-tastrophe!</p>
-            <p className={styles.subtitle}>Better luck tomorrow</p>
+            <p className={styles.title}>Today wasn't your day...</p>
+            <p className={styles.subtitle}>Better luck on tomorrow's cat</p>
           </>
         )}
       </div>

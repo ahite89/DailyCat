@@ -19,6 +19,7 @@ export default function Word({
 
     return (
         <input
+            name={`word` + id.toString()}
             className={[
                 styles.wordInput,
                 solved ? styles.solvedInput : "",

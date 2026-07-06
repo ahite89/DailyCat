@@ -1,28 +1,28 @@
 .header {
-  text-align: center;
-  margin: 2rem 0;
-}
-
-.title {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
-  gap: 0.5rem;
-  font-size: 2rem;
-  font-weight: 600;
-  letter-spacing: -0.03em;
-  line-height: 1.2;
-  margin: 0;
-}
-
-.date {
-  margin-top: 0.5rem;
-  color: #777;
-  font-size: 1rem;
-  font-weight: 400;
+  margin-bottom: 1rem;
 }
 
 .logo {
-  width: 32px;
-  height: 32px;
+  width: 3rem;
+  height: 3rem;
+  margin-bottom: 0.5rem;
+}
+
+.title {
+  margin: 0;
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  color: #222;
+}
+
+.metaData {
+  margin-top: 0.2rem;
+  font-size: 0.9rem;
+  color: #777;
+  font-weight: 500;
 }
