@@ -140,8 +140,7 @@ export function usePuzzle() {
       await sleep(220);
       const nextLives = Math.max(livesRemaining - 1, 0);
       setLivesRemaining(nextLives);
-      setTightenSentence(true);
-
+      
       if (nextLives === 0) {
         await revealRemainingAnswers();
         await sleep(350);
@@ -149,6 +148,10 @@ export function usePuzzle() {
         await sleep(450);
         setDisplayStatus("lost");
       }
+      else {
+        await sleep(350);
+        setTightenSentence(true);
+      }    
     }
     else {
       await sleep(350);
