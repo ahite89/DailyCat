@@ -28,15 +28,15 @@
 }
 
 .solvedInput {
-    color: #222;
-    border-bottom-color: transparent;
-    transition:
-        color 150ms ease,
-        border-bottom-color 150ms ease;
+  color: #222;
+  border-bottom-color: transparent;
+  transition:
+      color 150ms ease,
+      border-bottom-color 150ms ease;
 }
 
 .correct {
-    color: #1b7f3b;
+  color: #1b7f3b;
 }
 
 .incorrectInput {
