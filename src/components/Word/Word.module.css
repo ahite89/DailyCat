@@ -49,7 +49,7 @@
 }
 
 .flip {
-  animation: flipIn 400ms ease-out;
+  animation: flipIn 500ms ease-out;
 }
 
 @keyframes flipIn {

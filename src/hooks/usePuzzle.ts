@@ -14,6 +14,7 @@ export function usePuzzle() {
   const [livesRemaining, setLivesRemaining] = useState(TOTAL_LIVES);
   const [isChecking, setIsChecking] = useState(false);
   const [shouldShake, setShouldShake] = useState(false);
+  const [displayStatus, setDisplayStatus] = useState<GameStatus>("playing");
 
   const gameStatus: GameStatus =
     livesRemaining === 0
@@ -46,7 +47,7 @@ export function usePuzzle() {
       )
     );
 
-    await sleep(260);
+    await sleep(320);
 
     setWords((currentWords) =>
       currentWords.map((word) =>
@@ -140,7 +141,13 @@ export function usePuzzle() {
 
       if (nextLives === 0) {
         await revealRemainingAnswers();
+        await sleep(350);
+        setDisplayStatus("lost");
       }
+    }
+    else {
+      await sleep(350);
+      setDisplayStatus("won");
     }
 
     setIsChecking(false);
@@ -153,6 +160,7 @@ export function usePuzzle() {
     updateGuess,
     checkAnswers,
     gameStatus,
+    displayStatus,
     isChecking,
     shouldShake,
   };
