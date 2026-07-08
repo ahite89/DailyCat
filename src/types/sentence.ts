@@ -8,9 +8,6 @@ export type SentenceProps = {
 };
 
 export type WordProps = GameWord & {
-    onGuessChange: (
-        id: number,
-        guess: string
-    ) => void;
+    onGuessChange: (id: number, guess: string) => void;
     tightenSentence: boolean;
 };

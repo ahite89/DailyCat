@@ -1,4 +1,5 @@
 import type { GameWord, PuzzleWord } from "../types/puzzle";
+import { measureTextWidth } from "./measureTextWidth";
 
 export function createGameWords(
   words: PuzzleWord[]
@@ -8,5 +9,6 @@ export function createGameWords(
     guess: "",
     solved: !word.guessable,
     status: "idle",
+    textWidth: measureTextWidth(word.answer),
   }));
 }

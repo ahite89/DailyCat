@@ -1,4 +1,6 @@
-export const puzzles = [
+import type { PuzzleProps } from "../types/puzzle";
+
+export const puzzles: PuzzleProps[] = [
   {
     id: 1,
     imageUrl: "/images/dailycat1.png",

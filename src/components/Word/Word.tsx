@@ -8,11 +8,13 @@ export default function Word({
     guess,
     solved,
     status,
+    textWidth,
     onGuessChange,
     tightenSentence
 }: WordProps) {
     
-    const wordWidth = `${Math.max(answer.length, 3)}ch`;
+    const inputWidth = `${Math.max(answer.length, 3)}ch`;
+    const solvedWidth = `${textWidth}px`;
 
     if (!guessable) {
         return <span className={styles.visibleWord}>{answer}</span>;
@@ -26,11 +28,9 @@ export default function Word({
                     status === "flipping" ? styles.flip : "",
                     status === "correct" ? styles.correct : "",
                 ].join(" ")}
-                style={
-                    tightenSentence
-                    ? undefined
-                    : { width: wordWidth }
-                }
+                style={{
+                    width: tightenSentence ? solvedWidth : inputWidth,
+                }}
             >
                 {answer}
             </span>
@@ -46,7 +46,7 @@ export default function Word({
             ].join(" ")}
             value={guess}
             onChange={(event) => onGuessChange(id, event.target.value)}
-            style={{ width: wordWidth }}
+            style={{ width: inputWidth }}
             autoCapitalize="none"
             autoComplete="off"
             autoCorrect="off"

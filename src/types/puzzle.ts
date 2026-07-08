@@ -18,4 +18,5 @@ export type GameWord = PuzzleWord & {
     guess: string;
     solved: boolean;
     status: WordStatus;
+    textWidth: number;
 };
