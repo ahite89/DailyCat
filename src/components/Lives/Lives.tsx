@@ -1,7 +1,10 @@
-import type { LivesProps } from "../../types/lives";
 import CatIcon from "../CatIcon/CatIcon";
 import { TOTAL_LIVES } from "../../constants/constants";
 import styles from "./Lives.module.css";
+
+type LivesProps = {
+  livesRemaining: number;
+};
 
 export default function Lives({ livesRemaining }: LivesProps) {
   return (

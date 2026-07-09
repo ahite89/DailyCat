@@ -1,5 +1,8 @@
-import type { ImageProps } from "../../types/image";
 import styles from "./Image.module.css";
+
+type ImageProps = {
+    imageUrl: string;
+};
 
 export default function Image({ imageUrl }: ImageProps) {
     return (
