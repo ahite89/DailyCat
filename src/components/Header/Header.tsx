@@ -1,6 +1,10 @@
-import type { HeaderProps } from "../../types/header";
 import CatIcon from "../CatIcon/CatIcon";
 import styles from "./Header.module.css";
+
+type HeaderProps = {
+    puzzleNumber: number;
+    date: Date;
+};
 
 export default function Header({ puzzleNumber, date }: HeaderProps) {
     return (
@@ -10,9 +14,9 @@ export default function Header({ puzzleNumber, date }: HeaderProps) {
             <p className={styles.metaData}>
                 #{puzzleNumber} <span aria-hidden="true">•</span>{" "}
                 {date.toLocaleDateString("en-US", {
-                month: "long",
-                day: "numeric",
-                year: "numeric",
+                    month: "long",
+                    day: "numeric",
+                    year: "numeric",
                 })}
             </p>
         </header>
