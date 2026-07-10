@@ -26,15 +26,17 @@ export function usePuzzle() {
     : TOTAL_LIVES
   );
 
-  const [displayStatus, setDisplayStatus] = useState<GameStatus>(
-  shouldRestoreSavedGame
-    ? savedGame.displayStatus
-    : "playing"
+  const restoredStatus = shouldRestoreSavedGame
+  ? savedGame.displayStatus
+  : "playing";
+
+  const [displayStatus, setDisplayStatus] = useState<GameStatus>(restoredStatus);
+  const [tightenSentence, setTightenSentence] = useState(
+    restoredStatus !== "playing"
   );
 
   const [isChecking, setIsChecking] = useState(false);
   const [shouldShake, setShouldShake] = useState(false);
-  const [tightenSentence, setTightenSentence] = useState(false);
 
   useEffect(() => {
     saveGame({
