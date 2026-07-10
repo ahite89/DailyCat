@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useDailyPuzzle } from "./useDailyPuzzle";
 import { createGameWords } from "../utils/createGameWords";
+import { loadGame, saveGame } from "../utils/gameStorage";
 import { TOTAL_LIVES } from "../constants/constants";
 import type { GameStatus } from "../types/puzzle";
 
@@ -10,12 +11,39 @@ const sleep = (ms: number) =>
 export function usePuzzle() {
   const puzzle = useDailyPuzzle();
 
-  const [words, setWords] = useState(createGameWords(puzzle.words));
-  const [livesRemaining, setLivesRemaining] = useState(TOTAL_LIVES);
+  const savedGame = loadGame();
+  const shouldRestoreSavedGame = savedGame?.puzzleId === puzzle.id;
+
+  const [words, setWords] = useState(
+  shouldRestoreSavedGame
+    ? savedGame.words
+    : createGameWords(puzzle.words)
+  );
+
+  const [livesRemaining, setLivesRemaining] = useState(
+  shouldRestoreSavedGame
+    ? savedGame.livesRemaining
+    : TOTAL_LIVES
+  );
+
+  const [displayStatus, setDisplayStatus] = useState<GameStatus>(
+  shouldRestoreSavedGame
+    ? savedGame.displayStatus
+    : "playing"
+  );
+
   const [isChecking, setIsChecking] = useState(false);
   const [shouldShake, setShouldShake] = useState(false);
   const [tightenSentence, setTightenSentence] = useState(false);
-  const [displayStatus, setDisplayStatus] = useState<GameStatus>("playing");
+
+  useEffect(() => {
+    saveGame({
+      puzzleId: puzzle.id,
+      words,
+      livesRemaining,
+      displayStatus,
+    });
+  }, [puzzle.id, words, livesRemaining, displayStatus]);
 
   const gameStatus: GameStatus =
     livesRemaining === 0
