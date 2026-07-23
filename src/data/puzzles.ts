@@ -3,7 +3,7 @@ import type { PuzzleProps } from "../types/puzzle";
 export const puzzles: PuzzleProps[] = [
   {
     id: 1,
-    imageUrl: "/images/dailycat1.png",
+    imageUrl: "/images/dailyCat1.png",
     words: [
       { id: 1, answer: "playing", guessable: true },
       { id: 2, answer: "chess", guessable: true },
